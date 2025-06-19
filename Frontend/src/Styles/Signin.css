@@ -1,0 +1,155 @@
+/* Base styles */
+.signin-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+
+    /* Background image properties */
+    background-image: url('https://img.freepik.com/free-vector/abstract-geometric-wireframe-background_52683-59421.jpg?semt=ais_hybrid&w=740');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    /* Semi-transparent overlay to improve text readability */
+    position: relative;
+}
+
+/* Add overlay to make text more readable */
+.signin-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(219, 239, 244, 0.842);
+    z-index: 0;
+}
+
+.signin-card {
+    width: 100%;
+    max-width: 400px;
+    padding: 30px;
+    background: rgba(156, 215, 236, 0.973);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
+
+    /* Animation */
+    animation: fadeSlideIn 0.6s ease-out;
+}
+
+/* Title */
+.signin-title {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+    font-size: 24px;
+}
+
+/* Form styles */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #555;
+}
+
+.form-input, .form-select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.form-input:focus, .form-select:focus {
+    border-color: #4a90e2;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+.form-select {
+    appearance: none;
+    background-repeat: no-repeat;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-position: right 10px center;
+    background-size: 1em;
+}
+
+/* Button styles */
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #3a7bc8;
+}
+
+/* Link styles */
+.signup-link {
+    text-align: center;
+    margin-top: 20px;
+    color: #666;
+}
+
+.signup-link a {
+    color: #4a90e2;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+    .signin-container {
+        padding: 2rem 1rem;
+        align-items: center;
+    }
+
+    .signin-card {
+        padding: 20px;
+    }
+
+    .signin-title {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    .form-input, .form-select, .submit-btn {
+        padding: 10px 12px;
+        font-size: 15px;
+    }
+}
+
+/* Animation keyframes */
+@keyframes fadeSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

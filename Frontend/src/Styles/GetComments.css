@@ -1,0 +1,106 @@
+/* Container holding all comments */
+.comments-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 16px;
+  border-top: 1px solid #e0e0e0;
+  min-height: calc(100vh - 100px); /* fill viewport height minus header/footer */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Comments title */
+.comments-title {
+  font-size: 1.25rem;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+/* Single comment container */
+.comment {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+/* Comment user profile picture */
+.comment-user-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 12px;
+}
+
+/* Comment content block */
+.comment-content {
+  background-color: #f9f9f9;
+  padding: 10px 14px;
+  border-radius: 12px;
+  max-width: 100%;
+  flex-grow: 1;
+}
+
+/* Comment header with name and date */
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+/* User name */
+.comment-user-name {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #333;
+  padding-right: 8px;
+}
+
+/* Comment date */
+.comment-date {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+/* Comment text */
+.comment-text {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #444;
+}
+
+/* No comments message (centered) */
+.no-comments {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.1rem;
+  color: #999;
+  text-align: center;
+  font-style: italic;
+  min-height: 300px; /* prevents it from being too small */
+}
+
+.delete-btn-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+  color: #262626;
+  margin-left: auto; /* aligns it to the right inside flex containers */
+}
+
+.delete-btn-icon:hover {
+  transform: scale(1.1);
+  color: #d32f2f; /* Instagram-like red for delete */
+}
+
+.postView-container{
+    background-color: #fff;
+}

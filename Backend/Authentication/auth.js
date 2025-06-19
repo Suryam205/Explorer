@@ -1,0 +1,17 @@
+const jwt = require('jsonwebtoken');
+JWT_SECRET = process.env.JWT_SECRET;
+
+function createTokenForUser(user){
+    const payload = {
+        id: user._id,
+        fullName:user.fullName,
+        email: user.email,
+        profilePic: user.profilePic || 'https://i.pinimg.com/736x/c0/74/9b/c0749b7cc401421662ae901ec8f9f660.jpg',
+    }
+    const token = jwt.sign(payload, "Surya123");
+    return token;
+}
+
+module.exports={
+    createTokenForUser,   
+}

@@ -1,0 +1,65 @@
+/* Ensure the full height scroll works */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Make sure the root or app container can scroll */
+#root, .app-wrapper {
+  height: 100%;
+  overflow-y: auto;
+}
+
+/* This is your post component container */
+.postView-container {
+  
+  box-sizing: border-box;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+
+
+.delete-btn-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+  color: #262626;
+  margin-left: auto; /* aligns it to the right inside flex containers */
+}
+
+.delete-btn-icon:hover {
+  transform: scale(1.1);
+  color: #1e1d1d; /* Instagram-like red for delete */
+}
+
+.postView-container{
+    background-color: #fff;
+}
+.likes-count{
+  padding-left: 2px;
+  padding-right: 7px;
+}
+.icon {
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.icon:hover {
+  transform: scale(1.1);
+}
+
+.icon-row span {
+  transition: transform 0.2s ease;
+}
+
+.icon-row span:hover {
+  transform: scale(1.1);
+}

@@ -1,0 +1,85 @@
+body {
+  margin: 0;
+  background-color: #f5f5f5;
+  font-family: 'Helvetica Neue', sans-serif;
+}
+
+.feed-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 60px;
+  background-color: #fff;
+}
+.user-info {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  gap: 12px;
+  border-bottom: 1px solid #dbdbdb;
+}
+
+.profile-pic {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #ccc;
+}
+
+.fullName {
+  text-decoration: none;
+  border-bottom: none;
+  box-shadow: none;
+  font-weight: 300;   
+  font-size: 17px;  
+  font-weight: bold;  
+  color: #262626;
+
+}
+
+.post {
+  width: 100%;
+  max-width: 500px;
+  background-color: #fff;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #dbdbdb;
+}
+
+.media {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.description {
+  padding: 10px 15px;
+  font-size: 14px;
+}
+
+.actions {
+  display: flex;
+  padding: 10px 15px;
+  gap: 15px;
+  font-size: 20px;
+  color: #262626;
+}
+
+.icon {
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.icon:hover {
+  transform: scale(1.1);
+}
+
+.icon-row span {
+  transition: transform 0.2s ease;
+}
+
+.icon-row span:hover {
+  transform: scale(1.1);
+}
+
+
