@@ -19,7 +19,6 @@ const PostView = ({ post, userId }) => {
   const [commentsCount, setCommentsCount] = useState(0);
 
    
-    
 
  useEffect(() => {
     async function loadCommentCount() {
