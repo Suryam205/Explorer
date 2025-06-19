@@ -2,7 +2,7 @@ const FeedModel = require("../Models/UserFeed.model");
 const jwt = require("jsonwebtoken");
 const CommentModel = require("../Models/comment.model");
 const userModel = require('../Models/user.model');
-
+const JWT_SECRET = process.env.JWT_SECRET;
 
 
 const addComment = async (req, res) => {
@@ -18,11 +18,9 @@ const addComment = async (req, res) => {
           message: 'Unauthorized'
         });
     }
-    console.log('Received token:', token);
-
 
     //  Decode token to get user info
-    const decoded = jwt.verify(token, 'Surya123');
+    const decoded = jwt.verify(token, JWT_SECRET || "Surya123");
     const userId = decoded.id;
     const fullName = decoded.fullName;
     const userProfilePic = decoded.profilePic;
@@ -114,7 +112,7 @@ const deleteComment = async (req , res)=>{
                 message: 'Unauthorized'
               });
             }
-            const decoded = jwt.verify(token, "Surya123");
+            const decoded = jwt.verify(token, JWT_SECRET || "Surya123");
             const userIdFromToken = decoded.id;
             if (!decoded || !userIdFromToken) {
               return res.status(401).json({

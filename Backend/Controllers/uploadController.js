@@ -1,5 +1,7 @@
 const FeedModel = require("../Models/UserFeed.model");
 const jwt = require("jsonwebtoken");
+const JWT_SECRET = process.env.JWT_SECRET;
+
 
 const uploadFile = async (req, res) => {
   
@@ -21,7 +23,7 @@ const uploadFile = async (req, res) => {
                   message: 'Unauthorized'
               });
           }  
-    const decoded = jwt.verify(token, "Surya123");
+    const decoded = jwt.verify(token, JWT_SECRET || "Surya123");
     const userId = decoded.id;
     const fullName = decoded.fullName;
     const userProfilePic = decoded.profilePic;
@@ -67,7 +69,7 @@ const getFeedData = async (req, res) => {
           message: 'Unauthorized'
         });
       }
-      const decoded = jwt.verify(token, "Surya123");
+      const decoded = jwt.verify(token, JWT_SECRET || "Surya123");
       const userIdFromToken = decoded.id;
       if (!decoded || !userIdFromToken) {
         return res.status(401).json({
@@ -138,7 +140,7 @@ const handleLikesOnPost = async (req , res)=>{
           message: 'Unauthorized'
         });
       }
-      const decoded = jwt.verify(token, "Surya123");
+      const decoded = jwt.verify(token, JWT_SECRET || "Surya123");
       const userIdFromToken = decoded.id;
       if (!decoded || !userIdFromToken) {
         return res.status(401).json({
@@ -166,23 +168,8 @@ const handleLikesOnPost = async (req , res)=>{
         post.likes.push(userIdFromToken);
       }
 
-     console.log('User ID from token:', userIdFromToken);
-      console.log('Post ID:', postId);
-      console.log('Likes before:', post.likes);
-
-      if (isLiked) {
-        console.log('User already liked post, removing like');
-      } else {
-        console.log('User has not liked post yet, adding like');
-      }
-
-      console.log('Likes after:', post.likes);
-
-  
-
       await post.save();
-      console.log("Saved post after like change:", post.likes);
-      console.log(!isLiked)
+      
       res.status(200).json({
         success: true,
         message: 'Post liked/unLiked successfully',
@@ -209,7 +196,7 @@ const handleDeletePost = async (req , res) =>{
         message: 'Unauthorized'
       });
     }
-    const decoded = jwt.verify(token, "Surya123");
+    const decoded = jwt.verify(token, JWT_SECRET || "Surya123");
     const userIdFromToken = decoded.id;
     if (!decoded || !userIdFromToken) {
       return res.status(401).json({

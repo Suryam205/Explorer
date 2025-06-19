@@ -2,6 +2,7 @@ const { createTokenForUser } = require('../Authentication/auth');
 const userModel = require('../Models/user.model');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const JWT_SECRET = process.env.JWT_SECRET;
 
 
 const signupUser = async (req, res) => {
@@ -117,7 +118,7 @@ const protectedRoute = async (req, res) => {
         }
     
        
-        const decoded = jwt.verify(token, "Surya123");
+        const decoded = jwt.verify(token, JWT_SECRET || "Surya123");
         
         if(decoded){
             return res.status(200).json({
@@ -145,7 +146,7 @@ const fetchAllProfiles = async (req , res) =>{
         message: 'Unauthorized'
       });
     }
-    const decoded = jwt.verify(token, "Surya123");
+    const decoded = jwt.verify(token, JWT_SECRET || "Surya123");
     if(!decoded){
       return res.status(401).json({
         success: false,
@@ -293,7 +294,7 @@ const fetchFollowersCount = async (req, res) => {
       });
     }
 
-    const decoded = jwt.verify(token, "Surya123");
+    const decoded = jwt.verify(token, JWT_SECRET || "Surya123");
     const LoggedUser = await userModel.findById(decoded.id);
 
     if (!LoggedUser) {
@@ -360,7 +361,7 @@ const fetchLoggedInUser = async(req , res) =>{
       });
     }
     
-    const decoded = jwt.verify(token, "Surya123");
+    const decoded = jwt.verify(token, JWT_SECRET || "Surya123");
     if(!decoded){
       return res.status(401).json({
         success: false,

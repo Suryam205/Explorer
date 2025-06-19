@@ -1,4 +1,6 @@
 const dotenv = require('dotenv');
+dotenv.config(); // ✅ This loads your .env file
+
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
@@ -14,7 +16,7 @@ const commentRoutes = require('./Routes/comment');
 const app = express();
 const port =  process.env.PORT || 8000;
 
-dotenv.config();
+
 app.use(cors({
   origin: "http://localhost:5173",  // Your frontend origin
   credentials: true                 // Allow cookies/auth headers
