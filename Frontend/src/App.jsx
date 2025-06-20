@@ -13,6 +13,7 @@ import ExplorePage from './Pages/Home/FooterContent/ExplorePage'
 import ContentDetailed from './Pages/Home/FooterContent/ContentDetailed'
 import CommentSection from './Pages/Comments/CommentSection'
 import FollowingList from './Pages/UserPages/FollowingList'
+import LikedProfiles from './Pages/UserPages/LikedProfiles'
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
         <Route path='/contentDetails' element={<ProtectedRoute><ContentDetailed/></ProtectedRoute>}/>
         <Route path='/commentSection' element={<ProtectedRoute><CommentSection/></ProtectedRoute>}/>
         <Route path='/userFollowing' element={<ProtectedRoute><FollowingList/></ProtectedRoute>}/>
+        <Route path='/likedProfiles' element={<ProtectedRoute><LikedProfiles/></ProtectedRoute>}/>
 
       </Routes>
     </div>

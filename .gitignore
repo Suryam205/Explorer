@@ -28,8 +28,7 @@ yarn-error.log*
 .vscode/
 
 # Uploads and generated content
-Backend/uploads/
-Backend/uploadsProfiles/
+
 Backend/logs/
 
 # Test coverage

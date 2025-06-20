@@ -54,12 +54,18 @@ const ExplorePage = () => {
                     <Link to="/contentDetails" state={{ post: item }} >
                     {item.mediaUrl.endsWith('.mp4') ? (
                         <video controls className='Explore-media-reel'>
-                        <source src={`${API_URL}/${item.mediaUrl}`} type='video/mp4' />
+                        <source
+                        src={item.mediaUrl.startsWith('http')
+                            ? item.mediaUrl
+                            : `${API_URL}/${item.mediaUrl.replace(/^\/+/, '')}`}
+                        type='video/mp4' />
                         Your browser does not support the video tag.
                         </video>
                     ) : (
                         <img
-                        src={`${API_URL}/${item.mediaUrl}`}
+                        src={item.mediaUrl.startsWith('http')
+                            ? item.mediaUrl
+                            : `${API_URL}/${item.mediaUrl.replace(/^\/+/, '')}`}
                         className='Explore-media-image'
                         alt='feed content'
                         />

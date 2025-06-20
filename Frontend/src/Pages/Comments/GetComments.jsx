@@ -69,7 +69,9 @@ const GetComments = ({comments , onDeleteComment}) => {
             comments.map((comment) => (
               <div key={comment._id} className="comment">
                 <img
-                      src={`${API_URL}/${comment.userProfilePic.replace(/^\/+/, '')}`}
+                   src={comment.userProfilePic.startsWith('http')
+                       ? comment.userProfilePic
+                       : `${API_URL}/${comment.userProfilePic.replace(/^\/+/, '')}`}
                   alt={comment.fullName}
                   className="comment-user-pic"
                 />

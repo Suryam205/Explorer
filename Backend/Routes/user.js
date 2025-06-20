@@ -5,7 +5,8 @@ const uploadProfile = require('../Utils/userProfileMulterConfig')
 const bcrypt = require('bcrypt');
 const { signupUser , signinUser , protectedRoute ,
         fetchAllProfiles ,fetchProfile , fetchFollowers ,
-        fetchFollowersCount , fetchLoggedInUser , handleLogout,fetchFollowingList} = require('../Controllers/user.controller');
+        fetchFollowersCount , fetchLoggedInUser , handleLogout,
+        fetchFollowingList , fetchLikedProfiles} = require('../Controllers/user.controller');
 
 
 router.post('/signup' ,uploadProfile.single('profilePic'), signupUser);

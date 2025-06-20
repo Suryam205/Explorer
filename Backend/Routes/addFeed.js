@@ -10,6 +10,7 @@ router.get('/posts/:userId', uploadController.getUserPosts);
 router.post('/posts/like/:postId', uploadController.handleLikesOnPost);
 router.delete('/post/delete/:postId' , uploadController.handleDeletePost)
 router.get('/post/:postId', uploadController.fetchPost);
+router.get('/posts/likedProfiles/:postId', uploadController.fetchLikedProfiles);
 
 
 

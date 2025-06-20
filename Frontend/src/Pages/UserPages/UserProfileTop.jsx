@@ -61,7 +61,8 @@ const UserProfileTop = ({user}) => {
 
        <div className="profile-container">
             <div className="left-profile-section">
-              <img src={`${API_URL}/${user.profilePic.replace(/^\/+/, '')}`} alt="Profile" className="profile-image" />
+              <img src={user.profilePic.startsWith('http') ? user.profilePic : `${API_URL}/${user.profilePic.replace(/^\/+/, '')}`}
+               alt="Profile" className="profile-image" />
             </div>
 
             <div className="right-profile-section">

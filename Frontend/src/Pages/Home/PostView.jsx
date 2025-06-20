@@ -123,8 +123,9 @@ const handleLike = () => {
       <div className='user-info'>
         <Link to={`/profile/${currentPost.userId}`}>
           <img
-            src={`${API_URL}/${currentPost.userProfilePic.replace(/^\/+/, '')}`}
-            
+            src={currentPost.userProfilePic.startsWith('http')
+              ? currentPost.userProfilePic
+              : `${API_URL}/${currentPost.userProfilePic.replace(/^\/+/, '')}`}
             alt={`${currentPost.fullName}'s profile`}
             className='profile-pic'
           />
@@ -144,12 +145,18 @@ const handleLike = () => {
       {/* Media */}
       {currentPost.mediaUrl.endsWith('.mp4') ? (
         <video controls className='media'>
-          <source src={`${API_URL}/${currentPost.mediaUrl}`} type='video/mp4' />
+          <source
+          src={currentPost.mediaUrl.startsWith('http')
+              ? currentPost.mediaUrl
+              : `${API_URL}/${currentPost.mediaUrl.replace(/^\/+/, '')}`}
+          type='video/mp4' />
           Your browser does not support the video tag.
         </video>
       ) : (
         <img
-          src={`${API_URL}/${currentPost.mediaUrl}`}
+          src={currentPost.mediaUrl.startsWith('http')
+              ? currentPost.mediaUrl
+              : `${API_URL}/${currentPost.mediaUrl.replace(/^\/+/, '')}`}
           className='media'
           alt='feed content'
         />
@@ -160,7 +167,10 @@ const handleLike = () => {
             <span onClick={handleLike}>
               {liked ? <FaHeart size={22} color='red' /> : <FaRegHeart size={22} />}
             </span>
-            <span className='likes-count'>{currentPost.likes.length}</span>
+             <Link to="/likedProfiles" state={{ postId: currentPost._id }} style={{ textDecoration: 'none', color: 'black' }} >
+                  <span className='likes-count'> {currentPost.likes.length}</span>
+              </Link>
+            
             <Link to="/commentSection" state={{ postId: currentPost._id }} style={{ textDecoration: 'none', color: 'black' }}>
                   <span style={{ cursor: 'pointer' }}>
                       <FaRegComment size={20} />

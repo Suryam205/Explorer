@@ -4,6 +4,7 @@ import { useEffect , useState } from 'react'
 import { API_URL } from '../../../ConfigApi/Api';
 import '../../Styles/UserFollowers.css'
 import { Link, useLocation } from 'react-router-dom';
+import HomeFooter from '../Home/HomeFooter';
 
 
 const FollowingList = () => {
@@ -55,21 +56,30 @@ const FollowingList = () => {
 
   return (
      <div>
-                <h1 className="followers-title">Followers({followingList.length})</h1>
-                <div className="followers-list">
-                    {followingList.map((following) => (
+        <h1 className="followers-title">Followers({followingList.length})</h1>
+        <div className="followers-list">
+            {followingList.map((following) => (
+                    
+                <div key={following._id} className="follower-card">
+                    <Link to={`/profile/${following._id}`} state={{ user: following }}>
                          
-                        <div key={following._id} className="follower-card">
-                            <Link to={`/profile/${following._id}`} state={{ user: following }}>
-                               
-                                <img className="left" src={`${API_URL}/${following.profilePic.replace(/^\/+/, '')}`} alt="Follower" />
-                                 <p className="right"> {following.fullName}</p>
-                            </Link>
-                           
-                        </div>
-                    ))}
+                        <img 
+                        className="left" 
+                        src={
+                        following.profilePic.startsWith('http')
+                            ? following.profilePic
+                            : `${API_URL}/${following.profilePic.replace(/^\/+/, '')}`
+                        }
+                        alt="Follower" />
+                        <p className="right"> {following.fullName}</p>
+                    </Link>
+                    
                 </div>
-            </div>
+            ))}
+            
+        </div>
+        <HomeFooter/>
+    </div>
   )
 }
 

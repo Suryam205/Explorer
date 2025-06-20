@@ -2,13 +2,16 @@ const { createTokenForUser } = require('../Authentication/auth');
 const userModel = require('../Models/user.model');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const FeedModel = require('../Models/UserFeed.model');
 const JWT_SECRET = process.env.JWT_SECRET;
 
 
 const signupUser = async (req, res) => {
   try {
     const { fullName, email, password } = req.body;
-    const profilePic = req.file ? req.file.filename : null;
+    const profilePic = req.file ? req.file.path : null;
+
+   // const profilePic = req.file ? req.file.filename : null;
 
     if (!fullName || !email || !password || !profilePic) {
       return res.status(400).json({
@@ -31,7 +34,9 @@ const signupUser = async (req, res) => {
       fullName,
       email,
       password: hashedPassword,
-      profilePic: `/uploadsProfiles/${profilePic}`, // save file path
+      profilePic: profilePic
+
+      // profilePic: `/uploadsProfiles/${profilePic}`, // save file path
     });
 
     await newUser.save();
@@ -417,6 +422,8 @@ const handleLogout = async (req, res) => {
 
 
 
+
+
 module.exports = {
   signupUser,
   signinUser,
@@ -428,6 +435,7 @@ module.exports = {
   fetchLoggedInUser,
   handleLogout,
   fetchFollowingList,
+  
   
 };
  

@@ -53,7 +53,12 @@ const HomeProfile = () => {
                 {profile.map((item) => (
                     <div key={item._id} className="profile-card">
                     <Link to={`/profile/${item._id}`} state={{ user: item }}>
-                    <img src={`${API_URL}/${item.profilePic.replace(/^\/+/, '')}`} alt="Profile" /></Link>
+                    <img
+                       src={item.profilePic.startsWith('http')
+                           ? item.profilePic
+                           : `${API_URL}/${item.profilePic.replace(/^\/+/, '')}`}
+                       alt="Profile" />
+                     </Link>
                     <p className="profile-name">{item.fullName}</p>
                     </div>
                 ))}

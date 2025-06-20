@@ -23,17 +23,18 @@ const FeedIcons = ({item , setLikedPosts , setData , likedPosts}) => {
 
   return (
     <div>
-        <div className="icon-row d-flex gap-2 ps-2 pt-2">
+        <div className="icon-row d-flex gap-2 ps-2 pt-2"> 
                       <span onClick={() => toggleLike(item._id, setLikedPosts, setData)} style={{ cursor: 'pointer' }}>
                         {likedPosts[item._id] ? <FaHeart color="red" size={20} /> : <FaRegHeart size={20} />}
-                        
-                          <span className='likes-count'> {item.likes.length}</span>
-                        
+                          
                       </span>
+                      <Link to="/likedProfiles" state={{ postId: item._id }} style={{ textDecoration: 'none', color: 'black' }} >
+                             <span className='likes-count'> {item.likes.length}</span>
+                          </Link>
                       <Link to="/commentSection" state={{ postId: item._id }} style={{ textDecoration: 'none', color: 'black' }}>
                          <span style={{ cursor: 'pointer' }}>
                             <FaRegComment size={20} />
-                            <span className='likes-count'> {commentsCount}</span>
+                               <span className='likes-count'> {commentsCount}</span>
                          </span>
                       </Link>
                       <span style={{ cursor: 'pointer' }}>

@@ -61,7 +61,9 @@ const HomeData = () => {
                   <div className='user-info'>
                       <Link to={`/profile/${item.userId}`} >
                         <img
-                          src={`${API_URL}/${item.userProfilePic.replace(/^\/+/, '')}`}
+                          src={item.userProfilePic.startsWith('http')
+                            ? item.userProfilePic
+                            : `${API_URL}/${item.userProfilePic.replace(/^\/+/, '')}`}
                           alt={`${item.fullName}'s profile`}
                           className='profile-pic'
                         />
@@ -75,12 +77,18 @@ const HomeData = () => {
                   {/* Media */}
                   {item.mediaUrl.endsWith('.mp4') ? (
                     <video controls className='media'>
-                        <source src={`${API_URL}/${item.mediaUrl}`} type='video/mp4' />
+                        <source
+                        src={item.mediaUrl.startsWith('http')
+                            ? item.mediaUrl
+                            : `${API_URL}/${item.mediaUrl.replace(/^\/+/, '')}`} 
+                         type='video/mp4' />
                         Your browser does not support the video tag.
                     </video>
                   ) : (
                     <img
-                      src={`${API_URL}/${item.mediaUrl}`}
+                      src={item.mediaUrl.startsWith('http')
+                          ? item.mediaUrl
+                          : `${API_URL}/${item.mediaUrl.replace(/^\/+/, '')}`}
                       className='media'
                       alt='feed content'
                     />

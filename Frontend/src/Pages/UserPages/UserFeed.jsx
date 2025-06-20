@@ -53,12 +53,18 @@ const UserFeed = ({user}) => {
                         <Link to="/contentDetails" state={{ post: post, userId: user._id }}>
                             {post.mediaUrl.endsWith('.mp4') ? (
                                     <video controls className='user-media-reel'>
-                                    <source src={`${API_URL}/${post.mediaUrl}`} type='video/mp4' />
+                                    <source
+                                     src={post.mediaUrl.startsWith('http')
+                                        ? post.mediaUrl
+                                        : `${API_URL}/${post.mediaUrl.replace(/^\/+/, '')}`}
+                                    type='video/mp4' />
                                     Your browser does not support the video tag.
                                     </video>
                                 ) : (
                                     <img
-                                    src={`${API_URL}/${post.mediaUrl}`}
+                                    src={post.mediaUrl.startsWith('http')
+                                        ? post.mediaUrl
+                                        : `${API_URL}/${post.mediaUrl.replace(/^\/+/, '')}`}
                                     className='user-media-image'
                                     alt='feed content'
                                     />

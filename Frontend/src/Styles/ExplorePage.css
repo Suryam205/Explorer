@@ -1,11 +1,19 @@
 /* Prevent body from overflowing */
-body {
+html, body {
+  height: 100%;
   margin: 0;
   padding: 0;
-  overflow-x: hidden; /* ✅ removes horizontal scrollbar */
-  font-family: 'Helvetica Neue', sans-serif;
-  
+  overflow-x: hidden;
+  overflow-y: auto; /* 👈 allow vertical scroll */
 }
+
+
+#root {
+  min-height: 100vh; /* 👈 instead of 100% */
+  width: 100%;
+  background-color: #f0f2f5;
+}
+
 
 /* Explore Grid Container */
 .Explore-feed-container {
@@ -13,6 +21,7 @@ body {
   grid-template-columns: repeat(3, 1fr); /* Always 3 equal columns */
   gap: 2px;
   padding: 2px;
+  padding-bottom: 60px; 
   max-width: 100vw;
   box-sizing: border-box;
 }

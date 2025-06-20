@@ -1,6 +1,8 @@
+const userModel = require("../Models/user.model");
 const FeedModel = require("../Models/UserFeed.model");
 const jwt = require("jsonwebtoken");
 const JWT_SECRET = process.env.JWT_SECRET;
+
 
 
 const uploadFile = async (req, res) => {
@@ -27,6 +29,7 @@ const uploadFile = async (req, res) => {
     const userId = decoded.id;
     const fullName = decoded.fullName;
     const userProfilePic = decoded.profilePic;
+
     if (!decoded || !userId || !fullName || !userProfilePic) {
       return res.status(401).json({
         success: false,
@@ -37,7 +40,7 @@ const uploadFile = async (req, res) => {
 
     const newFeed = new FeedModel({
       description: description || '',
-      mediaUrl: req.file.path,
+      mediaUrl:  req.file?.url || req.file?.path,
       userId: userId,
       fullName: fullName,
       userProfilePic: userProfilePic || 'https://i.pinimg.com/736x/c0/74/9b/c0749b7cc401421662ae901ec8f9f660.jpg'
@@ -267,6 +270,34 @@ const fetchPost = async (req, res)=>{
   }
 }
 
+const fetchLikedProfiles = async (req, res) => {
+  try {
+    const { postId } = req.params;
+  
+   const post = await FeedModel.findById(postId).populate('likes', 'fullName profilePic');
+    
+    if (!post) {
+      return res.status(404).json({
+        success: false,
+        message: 'Post not found'
+      });
+    }
+  
+    return res.status(200).json({
+      success: true,
+      likedProfiles: post.likes
+    });
+
+  } catch (err) {
+    console.error('Fetch liked profiles error:', err);
+    return res.status(500).json({
+      success: false,
+      message: 'Server error',
+      error: err.message  
+    });
+  }
+};
+
 
 
 
@@ -276,5 +307,6 @@ module.exports = {
   getUserPosts,
   handleLikesOnPost,
   handleDeletePost,
-  fetchPost
+  fetchPost,
+  fetchLikedProfiles
 };
