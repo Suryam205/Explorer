@@ -18,7 +18,7 @@ const port =  process.env.PORT || 8000;
 
 
 app.use(cors({
-  origin: "http://localhost:5173",  // Your frontend origin
+  origin: "https://explorer-k7p9.onrender.com",  // Your frontend origin
   credentials: true                 // Allow cookies/auth headers
 }));
 app.use(express.json());
