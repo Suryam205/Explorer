@@ -44,28 +44,7 @@ const ProfileTopSection = ({user , loggedInUser }) => {
         }
       }, [user, loggedInUser]);
 
-      // const handleFollowersCount = async () => {
-      //   try {
-      //     const res = await axios.post(`${API_URL}/user/follow/${user._id}`, {}, {
-      //       withCredentials: true,
-      //     });
-
-      //     if (res.data.success) {
-      //           if (following) {
-      //           setFollowers(prev => prev - 1); // unfollow
-      //         } else {
-      //           setFollowers(prev => (prev || user.followers) + 1); // follow
-             
-      //         }
-      //         setFollowing(!following);   
-
-      //     } else {
-      //       console.error('Failed to follow user');
-      //     }
-      //   } catch (err) {
-      //     console.error('Error following user:', err);
-      //   }
-      // };
+      
     
       const handleFollowersCount = async () => {
   try {
@@ -94,7 +73,10 @@ const ProfileTopSection = ({user , loggedInUser }) => {
   return (
     <div className="profile-container">
   <div className="left-profile-section">
-    <img src={`${API_URL}/${user.profilePic.replace(/^\/+/, '')}`} alt="Profile" className="profile-image" />
+    <img 
+        src={user.profilePic.startsWith('http') ? user.profilePic : `${API_URL}/${user.profilePic.replace(/^\/+/, '')}`}
+        alt="Profile" 
+        className="profile-image" />
   </div>
 
   <div className="right-profile-section">
