@@ -38,15 +38,7 @@ CLOUDINARY_API_KEY=your_cloudinary_api_key
 CLOUDINARY_API_SECRET=your_cloudinary_api_secret
 VITE_API_URL=your_frontend_env_api_url
 
-## 📷 Screenshots
-- **Home Feed:**  
-  ![Home Feed](./Screenshots/HomePage.png)
 
-- **Profile Page:**  
-  ![Profile](./Screenshots/Profile.png)
-
-- **Explore Page:**  
-  ![Explore](./Screenshots/Explore.png)
 
 ## 🔗 Useful Links
 - 🌐 [Live Site](https://explorer-k7p9.onrender.com)
