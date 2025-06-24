@@ -56,7 +56,7 @@ const FollowingList = () => {
 
   return (
      <div>
-        <h1 className="followers-title">Followers({followingList.length})</h1>
+        <h1 className="followers-title">Following({followingList.length})</h1>
         <div className="followers-list">
             {followingList.map((following) => (
                     
